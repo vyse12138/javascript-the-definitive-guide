@@ -814,7 +814,9 @@ w = x - y - z; // 减法为 L 从左到右，所以等同于 w = (x - y) -z
 y = a ** b ** c; // 求幂为 R 从右到左，所以等同于 y = a ** (b ** c);
 ```
 ![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/67d89250728141399640fcf05cd846a4~tplv-k3u1fbpfcp-watermark.image)
+
 ![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/93d88db8537a468baadfc60767d10973~tplv-k3u1fbpfcp-watermark.image)
+
 ![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/859faf8f024142e8858e7a10d858aa79~tplv-k3u1fbpfcp-watermark.image)
 
 ### 运算表达式 （Arithmetic Expressions）
