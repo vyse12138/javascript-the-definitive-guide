@@ -1,6 +1,11 @@
-# [JS犀牛书笔记]1. 类型，值和变量
+# JS犀牛书英文第七版笔记
 
 挖个坑吧，JavaScript 犀牛书英文的第七版（JavaScript: The Definitive Guide, 7th Edition）其实在去年（2020）的五月份就发布了，当时就买了一本回来打算尝尝鲜，不过基于是一本厚厚的英文书，看了没多久就直接把我劝退了。不过现在打算趁着假期好好的读一遍，所以打算顺便写点读书笔记记录一下。话不多说直接开始吧。
+
+同步更新于：
+
+- [掘金](https://juejin.cn/user/1407794523416350)
+- [知乎](https://www.zhihu.com/people/zhu-yu-lei-9)
 
 ## 词法结构（Lexical Structure）
 
