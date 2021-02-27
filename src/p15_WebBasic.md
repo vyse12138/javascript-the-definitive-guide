@@ -1,3 +1,13 @@
+---
+# 贡献主题：https://github.com/xitu/juejin-markdown-themes
+theme: juejin
+highlight: vs2015
+---
+
+**GitHub 链接：**[javascript-the-definitive-guide](https://github.com/Vyse12138/javascript-the-definitive-guide) 
+
+**上一章链接：**[JavaScript 中的元编程](https://juejin.cn/post/6932682876366372872/)
+
 ## 浏览器中的 JavaScript（JavaScript in Web Browsers）
 
 JavaScript 在 1994 诞生时，最初的目的就是为了给浏览器加上动态的行为。从那以后，JavaScript 发生了很大的进化，它的范围和能力也在飞速增长。如今，网页可以成为用 JavaScript 进行开发的完整平台了。我们可以使用 JavaScript 为网页进行：
@@ -20,7 +30,7 @@ JavaScript 在 1994 诞生时，最初的目的就是为了给浏览器加上动
 
 浏览器可以显示 HTML 文本，但是若想要让浏览器执行 JavaScript 代码，则必须将 JavaScript 的代码（或代码的引用）加入 \<script\> 标签中。
 
-JavaScript 可以以 inline 的形式插入 HTML 的 \<script> 和 \</script> 标签中，但是我们通常会使用 \<script\> 的 src 属性（attribute）来指定包含 JavaScript 的 URL：
+JavaScript 可以以 inline 的形式插入 HTML 的 \<script\> 和 \</script\> 标签中，但是我们通常会使用 \<script\> 的 src 属性（attribute）来指定包含 JavaScript 的 URL：
 
 ```html
 <script src="scripts/code.js"></script>
@@ -35,7 +45,7 @@ JavaScript 可以以 inline 的形式插入 HTML 的 \<script> 和 \</script> �
 
 **模块**
 
-在 JavaScript 模块的部分介绍了用 import 和 export 来将代码分割成模块，如果要加载模块，则在 top-level 模块加载时使用的 \<script> 中需要加入 type="module" 属性，这样该模块以及其子模块都会被递归加载：
+在 JavaScript 模块的部分介绍了用 import 和 export 来将代码分割成模块，如果要加载模块，则在 top-level 模块加载时使用的 \<script\> 中需要加入 type="module" 属性，这样该模块以及其子模块都会被递归加载：
 
 ```html
 <script src="scripts/mainModule.js" type="module"></script>
@@ -247,3 +257,5 @@ name = name
 ```
 
 另一种解决 XSS 的方法是将任何不信任的内容展示在拥有 sandbox 属性的 iframe 中。
+
+**下一章链接：**[JavaScript 中的事件](https://juejin.cn/post/6933782931508985869/)
