@@ -1,13 +1,3 @@
----
-# 贡献主题：https://github.com/xitu/juejin-markdown-themes
-theme: juejin
-highlight: vs2015
----
-
-**GitHub 链接：**[javascript-the-definitive-guide](https://github.com/Vyse12138/javascript-the-definitive-guide) 
-
-**上一章链接：**[JavaScript 中的元编程](https://juejin.cn/post/6932682876366372872/)
-
 ## 浏览器中的 JavaScript（JavaScript in Web Browsers）
 
 JavaScript 在 1994 诞生时，最初的目的就是为了给浏览器加上动态的行为。从那以后，JavaScript 发生了很大的进化，它的范围和能力也在飞速增长。如今，网页可以成为用 JavaScript 进行开发的完整平台了。我们可以使用 JavaScript 为网页进行：
@@ -257,5 +247,3 @@ name = name
 ```
 
 另一种解决 XSS 的方法是将任何不信任的内容展示在拥有 sandbox 属性的 iframe 中。
-
-**下一章链接：**[JavaScript 中的事件](https://juejin.cn/post/6933782931508985869/)
