@@ -6848,3 +6848,49 @@ shadow DOM 最重要的特性就是封装。shadow root 的子元素可以从 DO
 我们可以在 light DOM 元素上调用其 attachShadow() 方法，并传入 {mode：'open'} 作为 argument，来将其转换成一个 shadow host。该方法会返回一个 shadow root 对象，并且将 shadow host 的 shadowRoot 属性指定为该对象。、
 
 shadow root 对象是一个 DocumentFragment，我们可以使用常规的 DOM 方法来为其增加内容（如 innerHTML）。
+
+### Location，Navigation 和 History
+
+Window 和 Document 对象上都有一个 location 属性，指向了 Location 对象。Location 包含了当前 document 的 URL 以及一系列相关的 API。
+
+Location 对象和 URL 对象很像，我们也可以使用 protocol，hostname，port 等属性来访问 URL 的指定部分，或使用 href 访问整个 URL。它还拥有两个属性：hash 和 search。hash 会返回 URL 的 fragment identifier 部分，即 # 及其之后的部分；search 则会返回 URL 的查询部分，即 ? 及其之后的部分（但是 Location 对象不持有 searchParams，我们可以用将其传入 URL 的构造函数来使用 searchParams）。
+
+#### 加载新的 Document
+
+如果我们对 window.location 或者 document.location 进行赋值的话，则传入的字符串会被解析成为 URL，然后浏览器会加载到那个 URL 上。
+
+我们传入的 URL 可以是一个绝对地址，也可以是一个相对地址，或者是一个 bare fragment identifier，用于滚动到指定 id 或者 name 的元素位置。
+
+或者可以使用 Location 对象的 replace() 方法。使用 replace() 方法和直接传入 URL 很像，只不过它不会在浏览器的历史记录里留下痕迹。
+
+#### 浏览器历史记录
+
+Window 对象上的 history 属性指向了 window 的 History 对象。History 对象模拟了浏览器的历史记录，并将其保存为了一列 documents 以及其状态。它的 length 属性表示了历史记录的数量。但是出于安全原因，JavaScript 无法访问历史记录中的 URLs。
+
+History 对象上的 back() 和 forward() 方法等同于点击了浏览器的 back 和 forward 按钮。它还拥有第三个方法 go()，接收一个整数作为 argument 然后 forward（正数）或 back（负数）指定数量的页面。
+
+如果 window 中拥有 子 windows （如 iframe），则子 window 的历史记录也会根据时间顺序交错地进入 History 对象。 
+
+而对于如今的单页面应用而言，它们在再次渲染内容时不需要再从服务器拉去数据，所以它们需要自定义地历史记录管理。通常有两种实现方法，会在下面被介绍。
+
+##### 通过 hashchange 进行管理
+
+第一种历史记录的管理方式是使用 location.hash 以及 hashchange 事件来实现的，其主要实现手段和技术如下：
+
+- 虽然传统意义上来说，设置 location.hash 是用于滚动到 document 中的某一部分，但是它并不一定要接收元素 ID 作为 fragment identifier。它也可以接收任何字符串，只要不是某一元素的 ID 的话，浏览器就不会进行滚动。
+
+- 为 location.hash 赋值时，它也会更新 location bar 中的 URL，并且会在浏览器历史记录中新增记录。
+
+- 在我们为 location.hash 赋值时，浏览器会在 Window 对象上抛出 hashchange 事件。所以说我们只需要为每一个状态添加一个特定的 fragment identifier，我们就可以在 hashchange 事件的回调函数中修改当前页面的状态。
+
+##### 通过 pushState() 进行管理
+
+第二种历史记录的管理方式会更为复杂一些，不过则会更正式一些，也不会再 URL 中显示 # 符号。
+
+这种更为健全的历史管理方式是通过 history.pushState() 来实现的。在 web app 进入新的状态时，调用 history.pushState() 为浏览器的历史记录增加一个新的用于保存之前状态的对象。在点击浏览器的 back 按钮时则会触发 popstate 事件，该事件会持有保存之前状态的对象，然后我们就可以通过它来重新渲染页面。除了保存状态的对象外，web app 应当可以为每一个状态保存其 URL，这样就可以直接通过 URL 访问某一个状态了。
+
+pushState() 接收的第一个 argument 就是包含了当前状态信息的对象，这个对象是通过 HTML structured clone 算法实现的，它类似于一个升级版的 JSON.stringify()，支持了 Map，Set，Date，typed arrays 以及 ArrayBuffers。而第二个 argument 则指定了用于表示状态的字符串（不过大多数浏览器并不支持，所以可以直接传入一个空字符串）。第三个 argument 则是可选的在 location bar 中新展示的 URL。
+
+需要记住的是，用 URL 表示的不同的状态使得用户可以 bookmark web app 中的某一状态，而在直接访问时不会触发 popstate 事件。所以我们也要定义通过 URL 直接显示 web app 的方法。
+
+除去 pushState() 方法，History 对象也定义了 replaceState()。它和 pushState() 几乎一样只不过不会保存历史记录。
