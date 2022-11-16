@@ -4,7 +4,7 @@
 
 挖个坑吧，JavaScript 犀牛书英文的第七版（JavaScript: The Definitive Guide, 7th Edition）其实在去年（2020）的五月份就发布了，当时就买了一本回来打算尝尝鲜，不过基于是一本厚厚的英文书，看了没多久就直接把我劝退了。不过现在打算趁着假期好好的读一遍，所以打算顺便写点读书笔记记录一下。话不多说直接开始吧。
 
-去网页版看看：[JavaScrpit 犀牛书第七版笔记](https://js.yuleiz.com)
+去网页版看看：[JavaScrpit 犀牛书第七版笔记](https://js.yulei.me)
 
 ## 词法结构（Lexical Structure）
 
